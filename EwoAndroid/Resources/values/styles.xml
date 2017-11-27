@@ -4,6 +4,11 @@
     <item name="windowNoTitle">true</item>
     <item name="android:windowContentTransitions">true</item>
   </style>
+  <style name="AcquaintThemeWithTitle" parent="AcquaintTheme.Base">
+    <item name="android:windowContentTransitions">true</item>
+    <item name="windowNoTitle">false</item>
+    
+  </style>
   <style name="AcquaintTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
     <item name="colorPrimary">@color/primary</item>
     <item name="colorPrimaryDark">@color/primaryDark</item>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+  <include
+      layout="@layout/toolbar" />
+  <FrameLayout
+      android:minWidth="25px"
+      android:minHeight="25px"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/frameLayout1"
+      android:padding="10dp">
+    <ScrollView
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView1"
+        android:scrollY="200dp"
+        android:verticalScrollbarPosition="right">
+      <TableLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/tableLayout1"
+          android:stretchColumns="*"
+          android:shrinkColumns="*">
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow8">
+          <TextView
+              android:text="What:"
+              android:id="@+id/whatHeadingTexView"
+              android:layout_column="0" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow13">
+          <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/WhatEditText"
+                        android:height="80dp"
+                        android:hint="What product has been processed?" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow8">
+          <TextView
+              android:text="When:"
+              android:id="@+id/whatHeadingTexView"
+              android:layout_column="0" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow13">
+          <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/WhenEditText"
+                        android:height="80dp"
+                        android:hint="When did this problem occurred?" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow8">
+          <TextView
+              android:text="Where:"
+              android:id="@+id/whatHeadingTexView"
+              android:layout_column="0" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow13">
+          <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/WhereEditText"
+                        android:height="80dp"
+                        android:hint="Where Did You see the problem on machine?" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow8">
+          <TextView
+              android:text="What:"
+              android:id="@+id/whatHeadingTexView"
+              android:layout_column="0" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow13">
+          <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/WhoEditText"
+                        android:height="80dp"
+                        android:hint="Operator/Maintenance Error/Skill independent?" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow8">
+          <TextView
+              android:text="Which:"
+              android:id="@+id/whatHeadingTexView"
+              android:layout_column="0" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow13">
+          <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/WhichEditText"
+                        android:height="80dp"
+                        android:hint="Which trend does the problem have?" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow8">
+          <TextView
+              android:text="How:"
+              android:id="@+id/whatHeadingTexView"
+              android:layout_column="0" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow13">
+          <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/HowEditText"
+                        android:height="80dp"
+                        android:hint="How is the state different from original position" />
+        </TableRow>
+        <TableRow
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:id="@+id/tableRow12">
+          <TableLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:id="@+id/tableLayout1"
+              android:stretchColumns="*">
+            <TableRow
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:id="@+id/tableRow12"
+                android:layout_width="match_parent">
+              <Button
+                  android:text="Back"
+                  android:layout_column="0"
+                  android:background="@color/primary"
+                  android:textColor="#FFFFFF"
+                  android:id="@+id/Back5WHDescription"
+                  android:layout_marginLeft="3dp"
+                  android:layout_marginRight="3dp" />
+              <Button
+                  android:text="Skip"
+                  android:layout_column="1"
+                  android:background="@color/primary"
+                  android:textColor="#FFFFFF"
+                  android:id="@+id/Skip5WHDescription"
+                  android:layout_marginLeft="3dp"
+                  android:layout_marginRight="3dp" />
+              <Button
+                  android:text="Next"
+                  android:layout_column="2"
+                  android:background="@color/primary"
+                  android:textColor="#FFFFFF"
+                  android:id="@+id/Next5WHDescription"
+                  android:layout_marginLeft="3dp"
+                  android:layout_marginRight="3dp" />
+            </TableRow>
+          </TableLayout>
+        </TableRow>
+      </TableLayout>
+    </ScrollView>
+  </FrameLayout>
+</LinearLayout>

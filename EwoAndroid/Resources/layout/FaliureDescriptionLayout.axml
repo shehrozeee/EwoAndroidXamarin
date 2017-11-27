@@ -1,64 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="25px"
-    android:minHeight="25px"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/frameLayout1"
-    android:padding="10dp">
-  <ScrollView
-      android:minWidth="25px"
-      android:minHeight="25px"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:id="@+id/scrollView1"
-      android:scrollY="200dp"
-      android:verticalScrollbarPosition="right">
-    <TableLayout
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar" />
+    <FrameLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/tableLayout1"
-        android:stretchColumns="*"
-        android:shrinkColumns="*">
-      <TableRow
-          android:minWidth="25px"
-          android:minHeight="25px"
-          android:id="@+id/tableRow8">
-        <TextView
-            android:text="Take Picture"
-            android:id="@+id/button1"
-            android:layout_column="0" />
-      </TableRow>
-      <TableRow
-          android:minWidth="25px"
-          android:minHeight="25px"
-          android:id="@+id/tableRow12">
-        <TableLayout
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout1"
+        android:padding="10dp">
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:id="@+id/tableLayout1"
-            android:stretchColumns="*">
-          <TableRow
-              android:minWidth="25px"
-              android:minHeight="25px"
-              android:id="@+id/tableRow12"
-              android:layout_width="match_parent">
-            <Button
-                android:text="Back"
-                android:layout_column="0"
-                android:id="@+id/button3"
-                android:layout_marginRight="0.0dp" />
-            <Button
-                android:text="Skip"
-                android:layout_column="1"
-                android:id="@+id/button3" />
-            <Button
-                android:text="Next"
-                android:layout_column="2"
-                android:id="@+id/button3" />
-          </TableRow>
-        </TableLayout>
-      </TableRow>
-    </TableLayout>
-  </ScrollView>
-</FrameLayout>
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView1"
+            android:scrollY="200dp"
+            android:verticalScrollbarPosition="right">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tableLayout1"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow8">
+                    <TextView
+                        android:text="Description"
+                        android:id="@+id/button1"
+                        android:layout_column="0" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow13">
+                    <EditText
+                        android:inputType="textMultiLine"
+                        android:layout_column="0"
+                        android:id="@+id/editText1"
+                        android:hint="Enter Failure description here"
+                        android:lines="4" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow12">
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/tableLayout1"
+                        android:stretchColumns="*">
+                        <TableRow
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/tableRow12"
+                            android:layout_width="match_parent">
+                            <Button
+                                android:text="Back"
+                                android:layout_column="0"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:id="@+id/BackFaliureDescription"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp" />
+                            <Button
+                                android:text="Skip"
+                                android:layout_column="1"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:id="@+id/SkipFaliureDescription"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp" />
+                            <Button
+                                android:text="Next"
+                                android:layout_column="2"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:id="@+id/NextFaliureDescription"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp" />
+                        </TableRow>
+                    </TableLayout>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar" />
+    <FrameLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout1"
+        android:padding="10dp">
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView1"
+            android:scrollY="200dp"
+            android:verticalScrollbarPosition="right">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tableLayoutInfo"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow12">
+                    <TextView
+                        android:text="EWO No"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_column="0"
+                        android:id="@+id/textView5" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow14">
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:layout_height="wrap_content">
+                        <EditText
+                            android:id="@+id/editTextFirstName"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="EWO Number(Must be unique)" />
+                    </android.support.design.widget.TextInputLayout>
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow13">
+                    <TextView
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:text="Date"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_column="0"
+                        android:id="@+id/textView8" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow15">
+                    <DatePicker
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:id="@+id/datePicker1"
+                        android:calendarViewShown="true"
+                        android:spinnersShown="false"
+                        android:clipToPadding="false"
+                        android:layout_marginBottom="0.0dp"
+                        android:layout_gravity="center_horizontal" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow16">
+                    <TextView
+                        android:text="Shift"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_column="0"
+                        android:id="@+id/textView9" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow17">
+                    <RadioGroup
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/radioGrouandroid">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="A"
+                            android:id="@+id/radioButtonA" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="B"
+                            android:id="@+id/radioButtonB" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="C"
+                            android:id="@+id/radioButtonC" />
+                    </RadioGroup>
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow16">
+                    <TextView
+                        android:text="Line"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_column="0"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:id="@+id/textView9" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow17">
+                    <RadioGroup
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:orientation="horizontal"
+                        android:id="@+id/radioGrouandroid">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="1"
+                            android:id="@+id/radioButtonl1" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:id="@+id/radioButtonl2" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:id="@+id/radioButtonl3" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="4"
+                            android:id="@+id/radioButtonl4" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:id="@+id/radioButtonl5" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6"
+                            android:id="@+id/radioButtonl6" />
+                    </RadioGroup>
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow16">
+                    <TextView
+                        android:text="Machine"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_column="0"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:id="@+id/textView9" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow17">
+                    <RadioGroup
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:orientation="vertical"
+                        android:id="@+id/radioGrouandroid"
+                        android:nestedScrollingEnabled="false">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="Mixer"
+                            android:id="@+id/radioButtonm1" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Noodler"
+                            android:id="@+id/radioButtonm2" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Roll Mill"
+                            android:id="@+id/radioButtonm3" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Plodder"
+                            android:id="@+id/radioButtonm4" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Stamper"
+                            android:id="@+id/radioButtonm5" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Wrapping"
+                            android:id="@+id/radioButtonm6" />
+                    </RadioGroup>
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow12">
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/tableLayout1"
+                        android:stretchColumns="*">
+                        <TableRow
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/tableRow12"
+                            android:layout_width="match_parent">
+                            <Button
+                                android:text="Back"
+                                android:layout_column="0"
+                                android:id="@+id/BackButtonInfo"
+                                android:layout_marginRight="3dp"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:layout_marginLeft="3dp" />
+                            <Button
+                                android:text="Skip"
+                                android:layout_column="1"
+                                android:id="@+id/SkipButtonInfo"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginLeft="3dp" />
+                            <Button
+                                android:text="Next"
+                                android:layout_column="2"
+                                android:id="@+id/NextButtonInfo"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp" />
+                        </TableRow>
+                    </TableLayout>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>

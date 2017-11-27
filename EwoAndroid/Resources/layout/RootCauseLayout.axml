@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar" />
+    <FrameLayout
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameLayout1"
+        android:padding="10dp">
+        <ScrollView
+            android:minWidth="25px"
+            android:minHeight="25px"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView1"
+            android:scrollY="200dp"
+            android:verticalScrollbarPosition="right">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/tableLayoutInfo"
+                android:stretchColumns="*"
+                android:shrinkColumns="*">
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow16">
+                    <TextView
+                        android:text="Select RootCause"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:layout_column="0"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:id="@+id/textView9" />
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow17">
+                    <RadioGroup
+                        android:minWidth="25px"
+                        android:minHeight="25px"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginRight="3dp"
+                        android:orientation="vertical"
+                        android:id="@+id/radioGrouandroid"
+                        android:nestedScrollingEnabled="false">
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="External Factors"
+                            android:id="@+id/radioButtonr1" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insufficient Maintenance"
+                            android:id="@+id/radioButtonr2" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Insufficient Skills"
+                            android:id="@+id/radioButtonr3" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="false"
+                            android:text="Design Weakness"
+                            android:id="@+id/radioButtonr4" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Operating Conditions not maintained"
+                            android:id="@+id/radioButtonr5" />
+                        <RadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Basic Conditions not maintained"
+                            android:id="@+id/radioButtonr6" />
+                    </RadioGroup>
+                </TableRow>
+                <TableRow
+                    android:minWidth="25px"
+                    android:minHeight="25px"
+                    android:id="@+id/tableRow12">
+                    <TableLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/tableLayout1"
+                        android:stretchColumns="*">
+                        <TableRow
+                            android:minWidth="25px"
+                            android:minHeight="25px"
+                            android:id="@+id/tableRow12"
+                            android:layout_width="match_parent">
+                            <Button
+                                android:text="Back"
+                                android:layout_column="0"
+                                android:id="@+id/BackButtonRootCause"
+                                android:layout_marginRight="3dp"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:layout_marginLeft="3dp" />
+                            <Button
+                                android:text="Skip"
+                                android:layout_column="1"
+                                android:id="@+id/SkipButtonRootCause"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:layout_marginRight="3dp"
+                                android:layout_marginLeft="3dp" />
+                            <Button
+                                android:text="Next"
+                                android:layout_column="2"
+                                android:id="@+id/NextButtonRootCause"
+                                android:background="@color/primary"
+                                android:textColor="#FFFFFF"
+                                android:layout_marginLeft="3dp"
+                                android:layout_marginRight="3dp" />
+                        </TableRow>
+                    </TableLayout>
+                </TableRow>
+            </TableLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>
