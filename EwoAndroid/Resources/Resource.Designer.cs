@@ -2225,11 +2225,11 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900e1
 			public const int BackButtonOverView = 2131296481;
 			
-			// aapt resource value: 0x7f0900e9
-			public const int BackButtonPictureSelect = 2131296489;
+			// aapt resource value: 0x7f0900eb
+			public const int BackButtonPictureSelect = 2131296491;
 			
-			// aapt resource value: 0x7f0900f2
-			public const int BackButtonRootCause = 2131296498;
+			// aapt resource value: 0x7f0900f4
+			public const int BackButtonRootCause = 2131296500;
 			
 			// aapt resource value: 0x7f0900ab
 			public const int BackFaliureDescription = 2131296427;
@@ -2237,8 +2237,17 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900a3
 			public const int EWORow = 2131296419;
 			
+			// aapt resource value: 0x7f090085
+			public const int EwoNumberTextView = 2131296389;
+			
 			// aapt resource value: 0x7f0900b4
 			public const int HowEditText = 2131296436;
+			
+			// aapt resource value: 0x7f09008b
+			public const int InfoDateEditText = 2131296395;
+			
+			// aapt resource value: 0x7f090087
+			public const int InfoEwoNumberEditText = 2131296391;
 			
 			// aapt resource value: 0x7f0900b7
 			public const int Next5WHDescription = 2131296439;
@@ -2246,14 +2255,23 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900a2
 			public const int NextButtonInfo = 2131296418;
 			
-			// aapt resource value: 0x7f0900eb
-			public const int NextButtonPictureSelect = 2131296491;
+			// aapt resource value: 0x7f0900ed
+			public const int NextButtonPictureSelect = 2131296493;
 			
-			// aapt resource value: 0x7f0900f4
-			public const int NextButtonRootCause = 2131296500;
+			// aapt resource value: 0x7f0900f6
+			public const int NextButtonRootCause = 2131296502;
 			
 			// aapt resource value: 0x7f0900ad
 			public const int NextFaliureDescription = 2131296429;
+			
+			// aapt resource value: 0x7f0900e4
+			public const int PictureSelectCamearaButton = 2131296484;
+			
+			// aapt resource value: 0x7f0900e6
+			public const int PictureSelectGalleryButton = 2131296486;
+			
+			// aapt resource value: 0x7f0900e8
+			public const int PictureSelectLegerButton = 2131296488;
 			
 			// aapt resource value: 0x7f0900e2
 			public const int SaveButtonOverView = 2131296482;
@@ -2264,11 +2282,11 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900a1
 			public const int SkipButtonInfo = 2131296417;
 			
-			// aapt resource value: 0x7f0900ea
-			public const int SkipButtonPictureSelect = 2131296490;
+			// aapt resource value: 0x7f0900ec
+			public const int SkipButtonPictureSelect = 2131296492;
 			
-			// aapt resource value: 0x7f0900f3
-			public const int SkipButtonRootCause = 2131296499;
+			// aapt resource value: 0x7f0900f5
+			public const int SkipButtonRootCause = 2131296501;
 			
 			// aapt resource value: 0x7f0900ac
 			public const int SkipFaliureDescription = 2131296428;
@@ -2291,11 +2309,11 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900b2
 			public const int WhoEditText = 2131296434;
 			
-			// aapt resource value: 0x7f0900f8
-			public const int acquaintanceDeleteButton = 2131296504;
+			// aapt resource value: 0x7f0900fa
+			public const int acquaintanceDeleteButton = 2131296506;
 			
-			// aapt resource value: 0x7f0900f9
-			public const int acquaintanceEditButton = 2131296505;
+			// aapt resource value: 0x7f0900fb
+			public const int acquaintanceEditButton = 2131296507;
 			
 			// aapt resource value: 0x7f0900ba
 			public const int acquaintanceListFloatingActionButton = 2131296442;
@@ -2306,8 +2324,8 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900b9
 			public const int acquaintanceRecyclerView = 2131296441;
 			
-			// aapt resource value: 0x7f0900fa
-			public const int acquaintanceSaveButton = 2131296506;
+			// aapt resource value: 0x7f0900fc
+			public const int acquaintanceSaveButton = 2131296508;
 			
 			// aapt resource value: 0x7f0900be
 			public const int action0 = 2131296446;
@@ -2393,9 +2411,6 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900a9
 			public const int button1 = 2131296425;
 			
-			// aapt resource value: 0x7f0900e5
-			public const int button2 = 2131296485;
-			
 			// aapt resource value: 0x7f09004b
 			public const int buttonPanel = 2131296331;
 			
@@ -2444,9 +2459,6 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f090054
 			public const int customPanel = 2131296340;
 			
-			// aapt resource value: 0x7f09008b
-			public const int datePicker1 = 2131296395;
-			
 			// aapt resource value: 0x7f090062
 			public const int decor_content_parent = 2131296354;
 			
@@ -2473,9 +2485,6 @@ namespace EwoAndroid
 			
 			// aapt resource value: 0x7f0900aa
 			public const int editText1 = 2131296426;
-			
-			// aapt resource value: 0x7f090087
-			public const int editTextFirstName = 2131296391;
 			
 			// aapt resource value: 0x7f090066
 			public const int edit_query = 2131296358;
@@ -2537,8 +2546,8 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f090046
 			public const int image = 2131296326;
 			
-			// aapt resource value: 0x7f0900e8
-			public const int imageView1 = 2131296488;
+			// aapt resource value: 0x7f0900ea
+			public const int imageView1 = 2131296490;
 			
 			// aapt resource value: 0x7f0900c8
 			public const int info = 2131296456;
@@ -2567,8 +2576,8 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f090048
 			public const int list_item = 2131296328;
 			
-			// aapt resource value: 0x7f0900f7
-			public const int masked = 2131296503;
+			// aapt resource value: 0x7f0900f9
+			public const int masked = 2131296505;
 			
 			// aapt resource value: 0x7f0900c1
 			public const int media_actions = 2131296449;
@@ -2672,23 +2681,23 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f09009e
 			public const int radioButtonm6 = 2131296414;
 			
-			// aapt resource value: 0x7f0900ec
-			public const int radioButtonr1 = 2131296492;
-			
-			// aapt resource value: 0x7f0900ed
-			public const int radioButtonr2 = 2131296493;
-			
 			// aapt resource value: 0x7f0900ee
-			public const int radioButtonr3 = 2131296494;
+			public const int radioButtonr1 = 2131296494;
 			
 			// aapt resource value: 0x7f0900ef
-			public const int radioButtonr4 = 2131296495;
+			public const int radioButtonr2 = 2131296495;
 			
 			// aapt resource value: 0x7f0900f0
-			public const int radioButtonr5 = 2131296496;
+			public const int radioButtonr3 = 2131296496;
 			
 			// aapt resource value: 0x7f0900f1
-			public const int radioButtonr6 = 2131296497;
+			public const int radioButtonr4 = 2131296497;
+			
+			// aapt resource value: 0x7f0900f2
+			public const int radioButtonr5 = 2131296498;
+			
+			// aapt resource value: 0x7f0900f3
+			public const int radioButtonr6 = 2131296499;
 			
 			// aapt resource value: 0x7f09008f
 			public const int radioGrouandroid = 2131296399;
@@ -2756,14 +2765,14 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f090072
 			public const int select_dialog_listview = 2131296370;
 			
-			// aapt resource value: 0x7f0900fb
-			public const int settingsButton = 2131296507;
-			
-			// aapt resource value: 0x7f0900fc
-			public const int settingsCancelButton = 2131296508;
-			
 			// aapt resource value: 0x7f0900fd
-			public const int settingsSaveButton = 2131296509;
+			public const int settingsButton = 2131296509;
+			
+			// aapt resource value: 0x7f0900fe
+			public const int settingsCancelButton = 2131296510;
+			
+			// aapt resource value: 0x7f0900ff
+			public const int settingsSaveButton = 2131296511;
 			
 			// aapt resource value: 0x7f09005c
 			public const int shortcut = 2131296348;
@@ -2828,8 +2837,8 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f090083
 			public const int tableLayoutInfo = 2131296387;
 			
-			// aapt resource value: 0x7f0900e6
-			public const int tableRow110 = 2131296486;
+			// aapt resource value: 0x7f0900e7
+			public const int tableRow110 = 2131296487;
 			
 			// aapt resource value: 0x7f090084
 			public const int tableRow12 = 2131296388;
@@ -2867,14 +2876,14 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900dc
 			public const int tableRow24 = 2131296476;
 			
-			// aapt resource value: 0x7f0900e4
-			public const int tableRow7 = 2131296484;
+			// aapt resource value: 0x7f0900e5
+			public const int tableRow7 = 2131296485;
 			
 			// aapt resource value: 0x7f0900a8
 			public const int tableRow8 = 2131296424;
 			
-			// aapt resource value: 0x7f0900e7
-			public const int tableRow9 = 2131296487;
+			// aapt resource value: 0x7f0900e9
+			public const int tableRow9 = 2131296489;
 			
 			// aapt resource value: 0x7f0900d0
 			public const int text = 2131296464;
@@ -2906,9 +2915,6 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f0900e0
 			public const int textView22 = 2131296480;
 			
-			// aapt resource value: 0x7f090085
-			public const int textView5 = 2131296389;
-			
 			// aapt resource value: 0x7f090089
 			public const int textView8 = 2131296393;
 			
@@ -2936,8 +2942,8 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f090057
 			public const int title_template = 2131296343;
 			
-			// aapt resource value: 0x7f0900f5
-			public const int toolbar = 2131296501;
+			// aapt resource value: 0x7f0900f7
+			public const int toolbar = 2131296503;
 			
 			// aapt resource value: 0x7f090029
 			public const int top = 2131296297;
@@ -2966,8 +2972,8 @@ namespace EwoAndroid
 			// aapt resource value: 0x7f09000e
 			public const int view_offset_helper = 2131296270;
 			
-			// aapt resource value: 0x7f0900f6
-			public const int visible = 2131296502;
+			// aapt resource value: 0x7f0900f8
+			public const int visible = 2131296504;
 			
 			// aapt resource value: 0x7f0900ae
 			public const int whatHeadingTexView = 2131296430;

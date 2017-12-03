@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.Support.V7.App;
+using Android.Support.Design.Widget;
 
 namespace EwoAndroid.Activities
 {
@@ -38,6 +39,8 @@ namespace EwoAndroid.Activities
             Button saveButton = FindViewById<Button>(Resource.Id.SaveButtonOverView);
             Button backButton = FindViewById<Button>(Resource.Id.BackButtonOverView);
             backButton.Click += BackButton_Click;
+            submitButton.Click += SubmitButton_Click;
+            saveButton.Click += SaveButton_Click;
             // ensure that the system bar color gets drawn
             Window.AddFlags(WindowManagerFlags.DrawsSystemBarBackgrounds);
 
@@ -45,9 +48,36 @@ namespace EwoAndroid.Activities
             Title = SupportActionBar.Title = "Overview";
         }
 
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SubmitButton_Click(object sender, EventArgs e)
+        {
+            if (!submit())
+            {
+                Intent intent = new Intent(this, typeof(MainActivity));
+                intent.AddFlags(ActivityFlags.ClearTask);
+                intent.AddFlags(ActivityFlags.NewTask);
+                StartActivity(intent);
+            }
+            else
+            {
+               Snackbar
+              .Make(((Button)sender), "Submission Failed", Snackbar.LengthLong)
+              .SetAction("Save", (x) => { FindViewById<Button>(Resource.Id.SaveButtonOverView).CallOnClick(); })
+              .Show();
+            }
+        }
+        private bool submit()
+        {
+            return true;
+        }
         private void BackButton_Click(object sender, EventArgs e)
         {
             base.OnBackPressed();
+            this.Finish();
         }
 
         private TableRow textRow(string text = "")
@@ -64,7 +94,7 @@ namespace EwoAndroid.Activities
             float d = this.Resources.DisplayMetrics.Density;
             int margin = (int)(dpValue * d); // margin in pixels
             var tv = new TextView(this) { Text = text };
-            var ll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FillParent, ViewGroup.LayoutParams.FillParent);
+            var ll = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.FillParent,  ViewGroup.LayoutParams.FillParent);
             ll.SetMargins(0, margin, 0, margin);
             //tv.LayoutParameters = ll;
             tv.SetPadding(0, margin,0, margin);

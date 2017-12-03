@@ -32,7 +32,7 @@
                 android:id="@+id/tableRow8">
                 <Button
                     android:text="Take Picture"
-                    android:id="@+id/button1"
+                    android:id="@+id/PictureSelectCamearaButton"
                                 android:textColor="#FFFFFF"
                     android:layout_column="0" />
             </TableRow>
@@ -42,7 +42,7 @@
                 android:id="@+id/tableRow7">
                 <Button
                     android:text="From Gallery"
-                    android:id="@+id/button2"
+                    android:id="@+id/PictureSelectGalleryButton"
                                 android:textColor="#FFFFFF"
                     android:layout_column="0" />
             </TableRow>
@@ -52,7 +52,7 @@
                 android:id="@+id/tableRow110">
                 <Button
                     android:text="From M/C Ledger"
-                    android:id="@+id/button2"
+                    android:id="@+id/PictureSelectLegerButton"
                                 android:textColor="#FFFFFF"
                     android:layout_column="0" />
             </TableRow>
@@ -60,8 +60,8 @@
                 android:minWidth="25px"
                 android:minHeight="25px"
                 android:id="@+id/tableRow9">
-                <ImageView
-                    android:src="@drawable/img_placeholder"
+              <FFImageLoading.Views.ImageViewAsync
+                  android:src="@drawable/img_placeholder"
                     android:layout_column="0"
                     android:layout_width="300.0dp"
                     android:layout_height="300.0dp"

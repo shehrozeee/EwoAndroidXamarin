@@ -36,7 +36,7 @@
                         android:layout_marginRight="3dp"
                         android:textAppearance="?android:attr/textAppearanceMedium"
                         android:layout_column="0"
-                        android:id="@+id/textView5" />
+                        android:id="@+id/EwoNumberTextView" />
                 </TableRow>
                 <TableRow
                     android:minWidth="25px"
@@ -48,7 +48,7 @@
                         android:layout_marginRight="3dp"
                         android:layout_height="wrap_content">
                         <EditText
-                            android:id="@+id/editTextFirstName"
+                            android:id="@+id/InfoEwoNumberEditText"
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
                             android:hint="EWO Number(Must be unique)" />
@@ -75,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="3dp"
                         android:layout_marginRight="3dp"
-                        android:id="@+id/datePicker1"
+                        android:id="@+id/InfoDateEditText"
                         android:calendarViewShown="true"
                         android:spinnersShown="false"
                         android:clipToPadding="false"

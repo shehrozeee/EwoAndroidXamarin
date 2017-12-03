@@ -14,7 +14,7 @@ using FFImageLoading.Transformations;
 using Android.Content;
 using Android.Support.V4.Widget;
 using System.Threading;
-
+using Newtonsoft.Json;
 
 namespace EwoAndroid.Activities
 {
@@ -74,8 +74,9 @@ namespace EwoAndroid.Activities
             var addButton = (FloatingActionButton)FindViewById(Resource.Id.acquaintanceListFloatingActionButton);
 
             addButton.Click += (sender, e) => {
-                //_SwipeRefreshLayout.Refreshing.ToString();
-                StartActivity(typeof(EwoInfo));
+                var Infoactivity = new Intent(this, typeof(EwoInfo));
+                Infoactivity.PutExtra("ewoObject",JsonConvert.SerializeObject(new EWO()));
+                StartActivity(Infoactivity);
             };
 
 
@@ -156,6 +157,7 @@ namespace EwoAndroid.Activities
         public string Machine { get; set; }
         public string pictureUrl { get; set; }
         public string pictureSmallUrl { get; set; }
+        public string pictureLocalPath { get; set; }
         public string faliureDescription { get; set; }
         public string What { get; set; }
         public string When { get; set; }
@@ -232,12 +234,12 @@ namespace EwoAndroid.Activities
             SetDataSource();
             EWOs.Clear();
             //Acquaintances = (await _DataSource.GetItems()).ToList();
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300Cover_.jpg", Date = DateTime.Now, Machine = "M1", line = "2" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160825_113830_.jpg",Date = DateTime.Now + new TimeSpan(1, 2, 1), Machine = "M1", line = "3" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160826_115536_.jpg",Date = DateTime.Now + new TimeSpan(1, 1, 1,1,1), Machine = "M5", line = "4" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160925_200250_.jpg",Date = DateTime.Now + new TimeSpan(2, 1, 1), Machine = "M1", line = "5" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300FateZero-Blu-rayBox1-01_.jpg",Date = DateTime.Now + new TimeSpan(1, 1, 1), Machine = "G1", line = "6" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300FB_IMG_1474133525512_.jpg",Date = DateTime.Now + new TimeSpan(3, 1, 1), Machine = "M1", line = "1" });
+            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300Cover_.jpg", Date = DateTime.Now, Machine = "Mixer", line = "2",Shift = "A" });
+            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160825_113830_.jpg",Date = DateTime.Now + new TimeSpan(1, 2, 1), Machine = "Noodler", line = "3",Shift = "A" });
+            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160826_115536_.jpg",Date = DateTime.Now + new TimeSpan(1, 1, 1,1,1), Machine = "Mixer", line = "4", Shift = "B" });
+            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160925_200250_.jpg",Date = DateTime.Now + new TimeSpan(2, 1, 1), Machine = "Roll Mill", line = "5", Shift = "A" });
+            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300FateZero-Blu-rayBox1-01_.jpg",Date = DateTime.Now + new TimeSpan(1, 1, 1), Machine = "Plodder", line = "6", Shift = "C" });
+            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300FB_IMG_1474133525512_.jpg",Date = DateTime.Now + new TimeSpan(3, 1, 1), Machine = "Stamper", line = "1", Shift = "A" });
 
             await ExpensiveTaskAsync();
 
@@ -308,7 +310,7 @@ namespace EwoAndroid.Activities
             //var detailIntent = new Intent(view.Context, typeof(AcquaintanceDetailActivity));
 
             // get an item by position (index)
-            var acquaintance = EWOs[(int)view.Tag];
+            var ewoObj = EWOs[(int)view.Tag];
 
             // Add some identifying item data to the intent. In this case, the id of the ewo for which we're about to display the detail screen.
             //detailIntent.PutExtra(view.Context.Resources.GetString(Resource.String.acquaintanceDetailIntentKey), acquaintance.Id);
@@ -328,11 +330,18 @@ namespace EwoAndroid.Activities
                 var transistionOptions = ActivityOptions.MakeSceneTransitionAnimation(view.Context as Activity, transitions.ToArray());
 
                 // start (navigate to) the detail activity, passing in the activity transition options we just created
-                //view.Context.StartActivity(detailIntent, transistionOptions.ToBundle());
+                var Infoactivity = new Intent(view.Context, typeof(EwoInfo));
+                Infoactivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
+                view.Context.StartActivity(Infoactivity, transistionOptions.ToBundle());
             }
             else
             {
-                //view.Context.StartActivity(detailIntent);
+                var Infoactivity = new Intent(view.Context, typeof(EwoInfo));
+                string j = JsonConvert.SerializeObject(ewoObj);
+                j.ToString();
+                Infoactivity.PutExtra("ewoObject",j);
+
+                view.Context.StartActivity(Infoactivity);
             }
         }
 
