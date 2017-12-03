@@ -33,6 +33,7 @@
                 <Button
                     android:text="Take Picture"
                     android:id="@+id/button1"
+                                android:textColor="#FFFFFF"
                     android:layout_column="0" />
             </TableRow>
             <TableRow
@@ -42,6 +43,7 @@
                 <Button
                     android:text="From Gallery"
                     android:id="@+id/button2"
+                                android:textColor="#FFFFFF"
                     android:layout_column="0" />
             </TableRow>
             <TableRow
@@ -51,6 +53,7 @@
                 <Button
                     android:text="From M/C Ledger"
                     android:id="@+id/button2"
+                                android:textColor="#FFFFFF"
                     android:layout_column="0" />
             </TableRow>
             <TableRow
@@ -82,14 +85,12 @@
                             android:text="Back"
                             android:layout_column="0"
                             android:id="@+id/BackButtonPictureSelect"
-                            android:background="@color/primary"
                             android:textColor="#FFFFFF"
                             android:layout_marginLeft="3dp"
                             android:layout_marginRight="3dp"/>
                         <Button
                             android:text="Skip"
                             android:layout_column="1"
-                            android:background="@color/primary"
                             android:textColor="#FFFFFF"
                             android:id="@+id/SkipButtonPictureSelect"
                             android:layout_marginLeft="3dp"
@@ -97,7 +98,6 @@
                         <Button
                             android:text="Next"
                             android:layout_column="2"
-							android:background="@color/primary"
                             android:textColor="#FFFFFF"
                             android:id="@+id/NextButtonPictureSelect"
                             android:layout_marginLeft="3dp"

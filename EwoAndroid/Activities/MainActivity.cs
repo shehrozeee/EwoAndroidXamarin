@@ -286,13 +286,20 @@ namespace EwoAndroid.Activities
                 viewHolder.ProfilePhotoImageView.SetImageBitmap(null);
             else
                 // use FFImageLoading library to asynchronously:
-                await ImageService
+                try
+                {
+                    await ImageService
                     .Instance
                     .LoadUrl(ewo.pictureSmallUrl, TimeSpan.FromHours(1))  // get the image from a URL
                     .LoadingPlaceholder("img_placeholder.jpg")                                          // specify a placeholder image
                     .Transform(new CircleTransformation())                                                      // transform the image to a circle
                     .Error(e => System.Diagnostics.Debug.WriteLine(e.Message))
                     .IntoAsync(viewHolder.ProfilePhotoImageView);
+                }
+                catch
+                {
+                    viewHolder.ProfilePhotoImageView.SetImageResource(Resource.Drawable.img_placeholder);
+                }
         }
 
         public void OnClick(View view)

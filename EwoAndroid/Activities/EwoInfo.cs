@@ -35,6 +35,12 @@ namespace EwoAndroid.Activities
             Button skipButton = FindViewById<Button>(Resource.Id.SkipButtonInfo);
             Button backButton = FindViewById<Button>(Resource.Id.BackButtonInfo);
             nextButton.Click += NextButton_Click;
+            backButton.Click += BackButton_Click;
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            base.OnBackPressed();
         }
 
         private void NextButton_Click(object sender, EventArgs e)

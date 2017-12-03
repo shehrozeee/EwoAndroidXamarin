@@ -1,9 +1,9 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <style name="AcquaintTheme" parent="AcquaintTheme.Base">
+  <color name="acquainttheme_background">#fffafafa</color><style name="AcquaintTheme" parent="AcquaintTheme.Base">
     <item name="windowNoTitle">true</item>
     <item name="android:windowContentTransitions">true</item>
-  </style>
+  <item name="android:colorPrimary">#ff039be5</item><item name="android:colorAccent">#ff2196f3</item><item name="android:colorControlActivated">#ff1565c0</item><item name="android:colorBackground">@color/acquainttheme_background</item><item name="android:windowBackground">?android:attr/colorBackground</item><item name="android:colorButtonNormal">#ff1976d2</item><item name="android:textColorPrimary">#ff212121</item><item name="android:colorControlNormal">#ff616161</item><item name="android:colorPrimaryDark">#ff1565c0</item></style>
   <style name="AcquaintThemeWithTitle" parent="AcquaintTheme.Base">
     <item name="android:windowContentTransitions">true</item>
     <item name="windowNoTitle">false</item>

@@ -105,14 +105,12 @@
                                 android:layout_column="0"
                                 android:id="@+id/BackButtonRootCause"
                                 android:layout_marginRight="3dp"
-                                android:background="@color/primary"
                                 android:textColor="#FFFFFF"
                                 android:layout_marginLeft="3dp" />
                             <Button
                                 android:text="Skip"
                                 android:layout_column="1"
                                 android:id="@+id/SkipButtonRootCause"
-                                android:background="@color/primary"
                                 android:textColor="#FFFFFF"
                                 android:layout_marginRight="3dp"
                                 android:layout_marginLeft="3dp" />
@@ -120,7 +118,6 @@
                                 android:text="Next"
                                 android:layout_column="2"
                                 android:id="@+id/NextButtonRootCause"
-                                android:background="@color/primary"
                                 android:textColor="#FFFFFF"
                                 android:layout_marginLeft="3dp"
                                 android:layout_marginRight="3dp" />
