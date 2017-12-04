@@ -34,7 +34,7 @@
                         android:text="EwoNo"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_column="0"
-                        android:id="@+id/textView11"
+                        android:id="@+id/textViewEwo"
                         android:layout_marginTop="3dp"
                         android:layout_marginBottom="3dp" />
                 </TableRow>
@@ -47,7 +47,7 @@
                         android:text="Shift"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_column="0"
-                        android:id="@+id/textView12"
+                        android:id="@+id/textViewShift"
                         android:layout_marginBottom="3dp" />
                 </TableRow>
                 <TableRow
@@ -58,7 +58,7 @@
                         android:text="Date"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_column="0"
-                        android:id="@+id/textView19"
+                        android:id="@+id/textViewDate"
                         android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp" />
                 </TableRow>
@@ -70,7 +70,7 @@
                         android:text="Line"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_column="0"
-                        android:id="@+id/textView20"
+                        android:id="@+id/textViewLine"
                         android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp" />
                 </TableRow>
@@ -82,7 +82,7 @@
                         android:text="Machine"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:layout_column="0"
-                        android:id="@+id/textView21"
+                        android:id="@+id/textViewMachine"
                         android:layout_marginBottom="3dp"
                         android:layout_marginTop="3dp" />
                 </TableRow>
@@ -102,23 +102,31 @@
                             <FFImageLoading.Views.ImageViewAsync
                                 android:id="@+id/ewoPhotoImageView"
                                 android:scaleType="fitCenter"
-                                android:layout_width="match_parent"
+                                android:layout_width="100dp"
                                 android:layout_height="100dp"
-                                android:layout_marginLeft="0.0dp"
-                                android:layout_marginRight="4.3dp"
+                                android:layout_marginLeft="3.0dp"
+                                android:layout_marginRight="0.0dp"
                                 android:transitionName="@string/profilePhotoTransition"
                                 android:layout_marginBottom="3dp" />
-                            <TextView
-                                android:id="@+id/txtquestion"
-                                android:layout_width="fill_parent"
-                                android:layout_height="match_parent"
-                                android:lines="5"
-                                android:inputType="textMultiLine"
-                                android:scrollHorizontally="false"
-                                android:scrollbars="vertical"
-                                android:text="Reason"
-                                android:textSize="15sp"
-                                android:layout_marginBottom="3dp" />
+                            <ScrollView
+                                android:minWidth="25px"
+                                android:minHeight="25px"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/scrollView1"
+                                android:scrollY="200dp"
+                                android:verticalScrollbarPosition="right">
+                                <TextView
+                                    android:id="@+id/TextViewFailureDecription"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="match_parent"
+                                    android:lines="5"
+                                    android:inputType="textMultiLine"
+                                    android:scrollHorizontally="false"
+                                    android:text="Reason"
+                                    android:textSize="15sp"
+                                    android:layout_marginBottom="3dp" />
+                            </ScrollView>
                         </TableRow>
                     </TableLayout>
                 </TableRow>
@@ -154,14 +162,14 @@
                                 android:layout_marginLeft="3dp"
                                 android:textColor="#FFFFFF" />
                             <Button
-                                android:text="Skip"
+                                android:text="Save"
                                 android:layout_column="1"
                                 android:id="@+id/SaveButtonOverView"
                                 android:textColor="#FFFFFF"
                                 android:layout_marginRight="3dp"
                                 android:layout_marginLeft="3dp" />
                             <Button
-                                android:text="Next"
+                                android:text="Submit"
                                 android:layout_column="2"
                                 android:id="@+id/SubmitButtonOverView"
                                 android:textColor="#FFFFFF"

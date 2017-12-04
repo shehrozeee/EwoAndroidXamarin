@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:p1="http://schemas.android.com/apk/res/android"
+    p1:minWidth="25px"
+    p1:minHeight="25px"
+    p1:layout_width="match_parent"
+    p1:layout_height="match_parent"
+    p1:id="@+id/frameLayout1">
+    <ScrollView
+        p1:minWidth="25px"
+        p1:minHeight="25px"
+        p1:layout_width="match_parent"
+        p1:layout_height="match_parent"
+        p1:id="@+id/scrollView1"
+        p1:padding="10dp">
+        <LinearLayout
+            p1:orientation="vertical"
+            p1:layout_width="match_parent"
+            p1:layout_height="match_parent"
+            p1:id="@+id/linearLayout1"
+            p1:padding="10dp">
+            <ImageView
+                p1:src="@drawable/icon"
+                p1:layout_width="100dp"
+                p1:layout_height="100dp"
+                p1:id="@+id/imageView1"
+                p1:cropToPadding="true"
+                p1:layout_gravity="center"
+                p1:layout_marginTop="5dp"
+                p1:layout_marginBottom="5dp" />
+            <TextView
+                p1:text="Please Enter your token Number"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView1" />
+            <EditText
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/tokenEdit"
+                p1:hint="Token Number" />
+            <Button
+                p1:text="OK"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/button1" />
+            <TextView
+                p1:text="User Name"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView2" />
+            <TextView
+                p1:text="Medium Text"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/userNameText" />
+            <TextView
+                p1:text="Department"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView4" />
+            <TextView
+                p1:text="Medium Text"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/depText" />
+            <TextView
+                p1:text="User Token"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView5" />
+            <TextView
+                p1:text="Medium Text"
+                p1:textAppearance="?android:attr/textAppearanceMedium"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/tokenID" />
+            <TextView
+                p1:text="Enter Phone Number"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView7" />
+            <EditText
+                p1:inputType="number"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/phoneEdit" />
+            <TextView
+                p1:text="Enter Email Address"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView6" />
+            <EditText
+                p1:inputType="textEmailAddress"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/emailEdit" />
+            <Button
+                p1:text="Request Validation Code"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/button3" />
+            <TextView
+                p1:text="Validation Code"
+                p1:textAppearance="?android:attr/textAppearanceLarge"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/textView8" />
+            <EditText
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:inputType="textPersonName"
+                p1:id="@+id/validEditText" />
+            <Button
+                p1:text="Create Account"
+                p1:layout_width="match_parent"
+                p1:layout_height="wrap_content"
+                p1:id="@+id/button2" />
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

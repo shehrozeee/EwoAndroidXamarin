@@ -15,18 +15,28 @@ using Android.Content;
 using Android.Support.V4.Widget;
 using System.Threading;
 using Newtonsoft.Json;
+using Android.Graphics;
+using System.Linq;
+using Android.Util;
+using System.Net;
 
 namespace EwoAndroid.Activities
 {
-    [Activity(Label = "EwoAndroid", MainLauncher = true, Icon = "@drawable/icon",Theme = "@style/AcquaintTheme")]
+    
+
+
+    [Activity(Label = "EwoAndroid", Icon = "@drawable/icon",Theme = "@style/AcquaintTheme")]
     public class MainActivity : AppCompatActivity
     {
-
+        const string TAG = "MainActivity";
         AcquaintanceCollectionAdapter _Adapter;
 
         SwipeRefreshLayout _SwipeRefreshLayout;
 
-
+        ISharedPreferences shp;
+        ISharedPreferencesEditor edtr;
+        List<EWO> drafts;
+        public static bool showDratfs = false;
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
@@ -38,8 +48,19 @@ namespace EwoAndroid.Activities
             .Make(fab, "Text Here", Snackbar.LengthLong)
             .SetAction("Party", (x) => { })
             .Show();*/
-
-
+            shp = Application.Context.GetSharedPreferences("ewosettings", FileCreationMode.Append);
+            edtr = shp.Edit();
+            if (!shp.Contains("drafts"))
+            {
+                drafts = new List<EWO>();
+                edtr.PutString("drafts", JsonConvert.SerializeObject(drafts));
+                edtr.Commit();
+            }
+            else
+            {
+                drafts = JsonConvert.DeserializeObject<List<EWO>>(shp.GetString("drafts", JsonConvert.SerializeObject(new List<EWO>())));
+            }
+            
             // instantiate adapter
             _Adapter = new AcquaintanceCollectionAdapter();
 
@@ -72,18 +93,38 @@ namespace EwoAndroid.Activities
             recyclerView.SetAdapter(_Adapter);
 
             var addButton = (FloatingActionButton)FindViewById(Resource.Id.acquaintanceListFloatingActionButton);
+            var draftsButton = (FloatingActionButton)FindViewById(Resource.Id.EwoEditFloatingActionButton);
+            draftsButton.Click += async (sender, e) =>
+             {
+                 Toast.MakeText(this, "Switching to " + (!showDratfs ? "Drafts" : "Online") + " records", ToastLength.Long).Show();
+                 showDratfs = !showDratfs;
+                 await LoadAcquaintances();
 
+             };
             addButton.Click += (sender, e) => {
                 var Infoactivity = new Intent(this, typeof(EwoInfo));
-                Infoactivity.PutExtra("ewoObject",JsonConvert.SerializeObject(new EWO()));
+                Infoactivity.PutExtra("ewoObject",JsonConvert.SerializeObject(new EWO() { Date = DateTime.Now,id = minId()}));
                 StartActivity(Infoactivity);
             };
 
 
         }
-
+        public int minId()
+        {
+            if (drafts != null)
+            {
+                if (drafts.Count != 0)
+                {
+                    return drafts.Min(x => x.id)-1;
+                }
+                return -1;
+            }
+            else
+                return -1;
+        }
         protected override async void OnResume()
         {
+            //Log.Debug(TAG, "InstanceID token: " + FirebaseInstanceId.Instance.Token);
             base.OnResume();
             await LoadAcquaintances();
             
@@ -128,7 +169,7 @@ namespace EwoAndroid.Activities
 
             return base.OnCreateOptionsMenu(menu);
         }
-
+        int count = 0;
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
             if (item != null)
@@ -136,7 +177,20 @@ namespace EwoAndroid.Activities
                 switch (item.ItemId)
                 {
                     case Resource.Id.settingsButton:
-                        //StartActivity(new Intent(this, typeof(SettingsActivity)));
+                        count++;
+                        if (count == 5)
+                        {
+
+
+                            edtr.Clear();
+                            edtr.Commit();
+                            StartActivity(typeof(InitialSettings));
+                            this.Finish();
+                        }
+                        else
+                        {
+                            Toast.MakeText(this, "You are " + (5 - count) + " more taps from clearing your initial settings", ToastLength.Short).Show();
+                        }
                         break;
                 }
             }
@@ -150,6 +204,7 @@ namespace EwoAndroid.Activities
     public class EWO
     {
         public int id { get; set; }
+        public string RootCause { get; set; }
         public string EwoNo { get; set; }
         public DateTime Date { get; set; }
         public string Shift  { get; set; }
@@ -217,9 +272,52 @@ namespace EwoAndroid.Activities
 
         public void ExpensiveTask()
         {
-            Thread.Sleep(500);
+            try
+            {
+                string j = HttpGetRequest("getEwoObs/40");
+                EWOs = JsonConvert.DeserializeObject<List<EWO>>(j);
+            }
+            catch(Exception ex)
+            {
+                ex.ToString();
+            }
         }
+        string serverURL = Globals.serverURL; 
+        public string HttpGetRequest(string Url)
+        {
+            string Out = String.Empty;
+            Url = serverURL + ":9080/" + Url;
+            System.Net.WebRequest req = System.Net.WebRequest.Create(Url);
+            try
+            {
+                System.Net.WebResponse resp = req.GetResponse();
+                using (System.IO.Stream stream = resp.GetResponseStream())
+                {
+                    using (System.IO.StreamReader sr = new System.IO.StreamReader(stream))
+                    {
+                        Out = sr.ReadToEnd();
+                        sr.Close();
+                    }
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                Toast.MakeText(Application.Context, "There is an issue with the internet connection.", ToastLength.Short).Show();
+                Out = string.Format("HTTP_ERROR :: The second HttpWebRequest object has raised an Argument Exception as 'Connection' Property is set to 'Close' :: {0}", ex.Message);
+            }
+            catch (WebException ex)
+            {
+                Toast.MakeText(Application.Context, "There is an issue with the internet connection.", ToastLength.Short).Show();
+                Out = string.Format("HTTP_ERROR :: WebException raised! :: {0}", ex.Message);
+            }
+            catch (Exception ex)
+            {
+                Toast.MakeText(Application.Context, "There is an issue with the internet connection.", ToastLength.Short).Show();
+                Out = string.Format("HTTP_ERROR :: Exception raised! :: {0}", ex.Message);
+            }
 
+            return Out;
+        }
         public Task ExpensiveTaskAsync()
         {
             return Task.Run(() => ExpensiveTask());
@@ -232,16 +330,34 @@ namespace EwoAndroid.Activities
         public async Task LoadAcquaintances()
         {
             SetDataSource();
-            EWOs.Clear();
-            //Acquaintances = (await _DataSource.GetItems()).ToList();
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300Cover_.jpg", Date = DateTime.Now, Machine = "Mixer", line = "2",Shift = "A" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160825_113830_.jpg",Date = DateTime.Now + new TimeSpan(1, 2, 1), Machine = "Noodler", line = "3",Shift = "A" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160826_115536_.jpg",Date = DateTime.Now + new TimeSpan(1, 1, 1,1,1), Machine = "Mixer", line = "4", Shift = "B" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300edited_20160925_200250_.jpg",Date = DateTime.Now + new TimeSpan(2, 1, 1), Machine = "Roll Mill", line = "5", Shift = "A" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300FateZero-Blu-rayBox1-01_.jpg",Date = DateTime.Now + new TimeSpan(1, 1, 1), Machine = "Plodder", line = "6", Shift = "C" });
-            EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/300FB_IMG_1474133525512_.jpg",Date = DateTime.Now + new TimeSpan(3, 1, 1), Machine = "Stamper", line = "1", Shift = "A" });
+            if (!MainActivity.showDratfs)
+            {
+                EWOs.Clear();
+                await ExpensiveTaskAsync();
+                /*//Acquaintances = (await _DataSource.GetItems()).ToList();
+                EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/Cover_.jpg", Date = DateTime.Now, Machine = "Mixer", line = "2", Shift = "A" });
+                EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/edited_20160825_113830_.jpg", Date = DateTime.Now + new TimeSpan(1, 2, 1), Machine = "Noodler", line = "3", Shift = "A" });
+                EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/edited_20160826_115536_.jpg", Date = DateTime.Now + new TimeSpan(1, 1, 1, 1, 1), Machine = "Mixer", line = "4", Shift = "B" });
+                EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/edited_20160925_200250_.jpg", Date = DateTime.Now + new TimeSpan(2, 1, 1), Machine = "Roll Mill", line = "5", Shift = "A" });
+                EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/FateZero-Blu-rayBox1-01_.jpg", Date = DateTime.Now + new TimeSpan(1, 1, 1), Machine = "Plodder", line = "6", Shift = "C" });
+                EWOs.Add(new EWO() { pictureSmallUrl = "http://unilever.innidata.com:9000/images/FB_IMG_1474133525512_.jpg", Date = DateTime.Now + new TimeSpan(3, 1, 1), Machine = "Stamper", line = "1", Shift = "A" });
+                */
+            }
+            else
+            {
+                ISharedPreferences shp;
+                ISharedPreferencesEditor edtr;
+                shp = Application.Context.GetSharedPreferences("ewosettings", FileCreationMode.Append);
+                EWOs.Clear();
+                try
+                {
+                    EWOs = JsonConvert.DeserializeObject<List<EWO>>(shp.GetString("drafts", JsonConvert.SerializeObject(new List<EWO>())));
+                }
+                catch
+                {
 
-            await ExpensiveTaskAsync();
+                }
+            }
 
 
             NotifyDataSetChanged();
@@ -274,18 +390,42 @@ namespace EwoAndroid.Activities
             // assign values to the views' text properties
             if (viewHolder == null) return;
 
-            viewHolder.NameTextView.Text = ewo.Machine;
-            viewHolder.CompanyTextView.Text = ewo.line;
-            viewHolder.JobTitleTextView.Text = ewo.Date.ToShortDateString();
+            viewHolder.NameTextView.Text = ewo.Date.ToShortDateString();
+            viewHolder.CompanyTextView.Text = "Machine: "+ewo.Machine;
+            viewHolder.JobTitleTextView.Text = "Line: "+ewo.line + "\t Ewo No: "+ewo.EwoNo;
 
             // set the Tag property of the AcquaintanceRow view to the position (index) of the item that is currently being bound. We'll need it later in the OnLick() implementation.
             viewHolder.AcquaintanceRow.Tag = position;
 
             // set OnClickListener of AcquaintanceRow
             viewHolder.AcquaintanceRow.SetOnClickListener(this);
+            if (!string.IsNullOrEmpty(ewo.pictureLocalPath))
+            {
+                //selected = true;
+                //FileSelect = false;
+                // Make it available in the gallery
 
-            if (string.IsNullOrWhiteSpace(ewo.pictureSmallUrl))
-                viewHolder.ProfilePhotoImageView.SetImageBitmap(null);
+
+                // Display in ImageView. We will resize the bitmap to fit the display
+                // Loading the full sized image will consume to much memory 
+                // and cause the application to crash.
+                try
+                {
+                    await ImageService
+                    .Instance
+                    .LoadFile(ewo.pictureLocalPath)
+                    .LoadingPlaceholder("img_placeholder.jpg")                                          // specify a placeholder image
+                    .Transform(new CircleTransformation())                                                      // transform the image to a circle
+                    .Error(e => System.Diagnostics.Debug.WriteLine(e.Message))
+                    .IntoAsync(viewHolder.ProfilePhotoImageView);
+                }
+                catch
+                {
+                    viewHolder.ProfilePhotoImageView.SetImageResource(Resource.Drawable.img_placeholder);
+                }
+            }            
+            else if (string.IsNullOrWhiteSpace(ewo.pictureSmallUrl))
+                viewHolder.ProfilePhotoImageView.SetImageResource(Resource.Drawable.img_placeholder);
             else
                 // use FFImageLoading library to asynchronously:
                 try
@@ -332,7 +472,10 @@ namespace EwoAndroid.Activities
                 // start (navigate to) the detail activity, passing in the activity transition options we just created
                 var Infoactivity = new Intent(view.Context, typeof(EwoInfo));
                 Infoactivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
-                view.Context.StartActivity(Infoactivity, transistionOptions.ToBundle());
+                view.Context.StartActivity(Infoactivity);
+
+                //view.Context.StartActivity(Infoactivity, transistionOptions.ToBundle());
+
             }
             else
             {

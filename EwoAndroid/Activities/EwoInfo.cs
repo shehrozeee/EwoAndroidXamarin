@@ -17,7 +17,7 @@ namespace EwoAndroid.Activities
     [Activity(Label = "EwoInfo", Theme = "@style/AcquaintTheme")]
     public class EwoInfo : AppCompatActivity
     {
-
+        bool editing = false;
         private DatePicker infoDatePicker;
         private EditText infoEwoNum;
         private RadioButton infoRadioButtonA;
@@ -70,6 +70,8 @@ namespace EwoAndroid.Activities
             string j = Intent.GetStringExtra("ewoObject");
             j.ToString();
             ewoObj = JsonConvert.DeserializeObject<EWO>(Intent.GetStringExtra("ewoObject"));
+
+            editing =  Intent.GetBooleanExtra("edit", false);
             if (string.IsNullOrWhiteSpace(ewoObj.EwoNo))
             {
                 ewoObj.EwoNo = generateEwoNum();
@@ -100,6 +102,8 @@ namespace EwoAndroid.Activities
             skipButton.Click += SkipButton_Click;
             nextButton.Click += NextButton_Click;
             backButton.Click += BackButton_Click;
+            if (editing)
+                skipButton.Visibility = ViewStates.Invisible;
         }
 
         private void BackButton_Click(object sender, EventArgs e)
@@ -109,17 +113,29 @@ namespace EwoAndroid.Activities
 
         private void NextButton_Click(object sender, EventArgs e)
         {
+
+
             ewoObj.Shift = GetShift();
             ewoObj.line = GetLine();
             ewoObj.Machine = GetMachine();
             var ewoNumEditText = FindViewById<EditText>(Resource.Id.InfoEwoNumberEditText);
             var ewoDateEdit = FindViewById<DatePicker>(Resource.Id.InfoDateEditText);
-            ewoObj.Date= ewoDateEdit.DateTime;
+            ewoObj.Date = ewoDateEdit.DateTime;
             ewoObj.EwoNo = ewoNumEditText.Text;
+            if (!editing)
+            {
+                var PictureSelectionActivity = new Intent(this, typeof(PictureSelectActivity));
+                PictureSelectionActivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
+                StartActivity(PictureSelectionActivity);
+            }
+            else
+            {
+                
+                var OverViewActivity= new Intent(this, typeof(Overview));
+                OverViewActivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
+                StartActivity(OverViewActivity);
 
-            var PictureSelectionActivity = new Intent(this, typeof(PictureSelectActivity));
-            PictureSelectionActivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
-            StartActivity(PictureSelectionActivity);
+            }
         }
         private void SkipButton_Click(object sender, EventArgs e)
         {

@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "510640183109",
+    "firebase_url": "https://ewoandroid-188007.firebaseio.com",
+    "project_id": "ewoandroid-188007",
+    "storage_bucket": "ewoandroid-188007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510640183109:android:d8bb50cad2f29328",
+        "android_client_info": {
+          "package_name": "com.innidata.ewo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510640183109-l097deeqrs2fj9qe9bvlcdc094a97i7p.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "510640183109-0vb8edcfr71qqq3tr4jvgruce10gksnv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2UybdXxDMudL3hQHI7omP1Tv6FXYFGks"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

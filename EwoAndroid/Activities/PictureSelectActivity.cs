@@ -73,7 +73,7 @@ namespace EwoAndroid.Activities
     [Activity(Label = "EwoInfo", Icon = "@drawable/icon", Theme = "@style/AcquaintTheme")]
     public class PictureSelectActivity : AppCompatActivity
     {
-
+        bool editing = false;
         public static class App
         {
             public static Java.IO.File _file;
@@ -103,26 +103,21 @@ namespace EwoAndroid.Activities
             Title = SupportActionBar.Title = "Picture Selection";
             _imageView = FindViewById<ImageViewAsync>(Resource.Id.imageView1);
             ewoObj = JsonConvert.DeserializeObject<EWO>(Intent.GetStringExtra("ewoObject"));
-
+            editing = Intent.GetBooleanExtra("edit", false);
             if (!string.IsNullOrEmpty(ewoObj.pictureLocalPath))
             {
-                selected = true;
-                FileSelect = false;
+                //selected = true;
+                //FileSelect = false;
                 // Make it available in the gallery
 
-                Intent mediaScanIntent = new Intent(Intent.ActionMediaScannerScanFile);
-                Uri contentUri = Uri.FromFile(App._file);
-                SelectedFileName = App._file.Name;
-                mediaScanIntent.SetData(contentUri);
-                SendBroadcast(mediaScanIntent);
-
+                
                 // Display in ImageView. We will resize the bitmap to fit the display
                 // Loading the full sized image will consume to much memory 
                 // and cause the application to crash.
 
                 int height = 800;
                 int width = 600;
-                App.bitmap = App._file.Path.LoadAndResizeBitmap(width, height);
+                App.bitmap =  ewoObj.pictureLocalPath.LoadAndResizeBitmap(width, height);
                 if (App.bitmap != null)
                 {
                     _imageView.SetImageBitmap(App.bitmap);
@@ -134,8 +129,8 @@ namespace EwoAndroid.Activities
             {
                 SetImage();
             }
-            Button openGalleryButton = FindViewById<Button>(Resource.Id.PictureSelectCamearaButton);
-            Button openCameraButton = FindViewById<Button>(Resource.Id.PictureSelectGalleryButton);
+            Button openGalleryButton = FindViewById<Button>(Resource.Id.PictureSelectGalleryButton);
+            Button openCameraButton = FindViewById<Button>(Resource.Id.PictureSelectCamearaButton);
             Button openLedgerButton = FindViewById<Button>(Resource.Id.PictureSelectLegerButton);
 
 
@@ -145,6 +140,8 @@ namespace EwoAndroid.Activities
             skipButton.Click += SkipButton_Click;
             backButton.Click += BackButton_Click;
             nextButton.Click += NextButton_Click;
+            if (editing)
+                skipButton.Visibility = ViewStates.Invisible;
             if (IsThereAnAppToTakePictures())
             {
                 CreateDirectoryForPictures();
@@ -185,12 +182,34 @@ namespace EwoAndroid.Activities
 
         private void NextButton_Click(object sender, EventArgs e)
         {
-            
-            var FaliureDescriptionActivity = new Intent(this, typeof(FaliureDescription));
-            FaliureDescriptionActivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
-            StartActivity(FaliureDescriptionActivity);
-        }
+            if (selected)
+            {
+                if (FileSelect)
+                {
+                    SelectedFileName = BitmapHelpers.ResizeImage(GetPathToImage(uri));
+                }
+                else
+                {
+                    SelectedFileName = BitmapHelpers.ResizeImage(App._file.Path);
+                }
+                ewoObj.pictureLocalPath = SelectedFileName;
+            }
+            if (!editing)
+            {
+                var FaliureDescriptionActivity = new Intent(this, typeof(FaliureDescription));
+                FaliureDescriptionActivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
+                StartActivity(FaliureDescriptionActivity);
 
+            }
+            else
+            {
+
+                var OverViewActivity = new Intent(this, typeof(Overview));
+                OverViewActivity.PutExtra("ewoObject", JsonConvert.SerializeObject(ewoObj));
+                StartActivity(OverViewActivity);
+
+            }
+        }
         private string GetPathToImage(Android.Net.Uri uri)
         {
             string doc_id = "";
